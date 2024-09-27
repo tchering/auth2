@@ -1,0 +1,15 @@
+<h1>Login</h1>
+<% if flash[:danger] %>
+  <div>
+    <%= flash[:danger] %>
+  </div>
+<%end%>
+<%= form_with(url: login_path, scope: :session) do |f| %>
+  <div class="form_field">
+    <%= f.email_field :email, placeholder: "Email" %>
+  </div>
+  <div class="form_field">
+    <%= f.password_field :password, placeholder: "Password" %>
+  </div>
+  <%= f.submit "Login", disable_with: 'Submitting...' %>
+<% end %>

@@ -1,0 +1,77 @@
+<style>
+  .form-header {
+    text-align: center;
+    font-size: 28px;
+    color: #667eea;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+  }
+
+  .form-body {
+    padding: 20px;
+  }
+
+  .form_field {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    border: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    background-color: #f8f9fa;
+    width: 100%; /* Makes the input field full width */
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 2px #667eea;
+  }
+
+  .btn-signup {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    width: 100%; /* Makes the button full width */
+  }
+
+  .btn-signup:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  }
+
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+</style>
+<h1 class="form-header">Form for Post</h1>
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="form-container">
+    <div class="form-body">
+      <div class="form_field">
+        <%= f.text_field :title, placeholder: "Title", class: 'form-control' %>
+        <div class="error-message" id="title-error"></div>
+      </div>
+      <div class="form_field">
+        <%= f.text_area :body, placeholder: "Body", class: 'form-control' %>
+        <div class="error-message" id="body-error"></div>
+      </div>
+      <%= f.submit "Create Post", class: 'btn btn-primary btn-block btn-signup' %>
+    </div>
+  </div>
+<% end %>

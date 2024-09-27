@@ -1,0 +1,49 @@
+<style>
+  .landing-header {
+    text-align: center;
+    font-size: 32px;
+    color: #667eea;
+    margin-bottom: 20px;
+  }
+
+  .post-list-header {
+    text-align: center;
+    font-size: 28px;
+    color: #764ba2;
+    margin-bottom: 20px;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .post-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 80%; /* Adjust width as needed */
+  }
+
+  .post-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  }
+</style>
+<h1 class="landing-header">This will be the landing page</h1>
+<h1 class="post-list-header">All Post List</h1>
+<div class="container">
+  <div class="post-list">
+    <% @posts.each do |post| %>
+      <%= render partial: 'posts/post', locals: { post: post } %>
+    <% end %>
+    <%= render 'users/user_stats' %>
+    <% if current_user %>
+      <%= render 'posts/form' %>
+    <% end %>
+  </div>
+</div>

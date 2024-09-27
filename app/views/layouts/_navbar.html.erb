@@ -1,0 +1,51 @@
+<div class="nav fixed">
+  <div class="nav-links">
+    <%= link_to "Home", root_path, class: "nav-link" %>
+    <%= link_to "Contact", contact_path, class: "nav-link" %>
+    <%= link_to "Blog", blog_path, class: "nav-link" %>
+    
+    <% if logged_in? %>
+      <%= link_to "Logout", logout_path, data: { turbo_method: :delete }, class: "nav-link" %>
+      <span class="nav-username"><%= current_user.username %></span>
+      <%= link_to "Edit Pass", edit_password_path(current_user), class: "nav-link" %>
+    <% else %>
+      <%= link_to "Signup", signup_path, class: "nav-link" %>
+      <%= link_to "Login", login_path, class: "nav-link" %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .nav {
+    background-color: #667eea; /* Navbar background color */
+    color: white; /* Text color */
+    padding: 15px 30px; /* Spacing */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out links */
+    align-items: center; /* Center items vertically */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  }
+
+  .nav-links {
+    display: flex; /* Flex layout for links */
+    gap: 20px; /* Space between links */
+  }
+
+  .nav-link {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Spacing around links */
+    border-radius: 5px; /* Rounded corners for links */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+  }
+
+  .nav-username {
+    font-weight: bold; /* Bold username */
+    margin: 0 15px; /* Spacing around username */
+  }
+</style>
